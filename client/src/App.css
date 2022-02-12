@@ -18,10 +18,63 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: center; */
   font-size: calc(10px + 2vmin);
+  font-family: Futura, Avenir, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
+}
+
+.top-nav {
+  height: 40px;
+  display: flex;
+  align-content: flex-start;
+  align-items: center;
+  padding: 0 4rem;
+  font-weight: regular;
+  letter-spacing: 0.1em;
+}
+
+.drag-n-drop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: left;
+  height: 100%;
+  padding: 1rem 4rem;
+  /* grid-template-columns: repeat(auto-fill, 33.333%); */
+  background-color: grey;
+}
+
+.dnd-group {
+  display: flex;
+  min-width: 25%;
+  min-height: 96px;
+  margin-right: 2rem;
+  flex-direction: column;
+  background-color: magenta;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.group-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+  text-align: left;
+}
+
+.dnd-item {
+  display: flex;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  background-color: blue;
+  border-radius: 5px;
+  min-height: 80px;
+  font-size: 1rem;
+}
+
+.dnd-item:last-of-type {
+  margin-bottom: 0;
 }
 
 .App-link {
