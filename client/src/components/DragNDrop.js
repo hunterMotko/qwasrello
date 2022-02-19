@@ -72,77 +72,16 @@ function DragNDrop({ data }) {
         uniqueColumns(data)
     }, [])
 
-
-    // return (
-    //     <div className="drag-n-drop">
-
-    //         {columns.map((col) => {
-    //             <Column
-    //                 title={col}
-    //                 items={data.filter(e => e.status === col)}
-    //             />
-    //         })}
-
-    //     </div>
-    // )
-
-
-
-
     return (
         <div className='drag-n-drop'>
-            {columns.map((grp, grpI) => (
+            {columns.map(grp => (
 
                 <Column
                     title={grp}
                     items={data.filter(e => e.status === grp)} />
-
-                // <div
-                //     key={grp}
-                //     className='dnd-group'
-                // >
-                //     <div className='group-title'>{grp}</div>
-                //     {data.filter(e => e.status === grp).map((item, itemI) => (
-                //         <div
-                //             key={item.id}
-                //             className="dnd-item"
-                //         >
-
-                //             {item.name}
-                //         </div>
-                //     ))}
-                // </div>
             ))}
         </div>
     );
-
-
-
-
-
-    // return (
-    //     <div className='drag-n-drop'>
-    //         {columns.map((grp, grpI) => (
-    //             <div
-    //                 key={grp}
-    //                 className='dnd-group'
-    //             >
-    //                 <div className='group-title'>{grp}</div>
-    //                 {data.filter(e => e.status === grp).map((item, itemI) => (
-    //                     <div
-    //                         key={item.id}
-    //                         className="dnd-item"
-    //                     >
-
-    //                         {item.name}
-    //                     </div>
-    //                 ))}
-    //             </div>
-    //         ))}
-    //     </div>
-    // );
-
-
 }
 
 export default DragNDrop;
