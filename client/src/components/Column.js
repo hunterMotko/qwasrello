@@ -7,6 +7,7 @@ function Column({ title, items, handleDragStart, handleDragEnter, getStyles, dra
         <div
             key={title}
             className='dnd-group'
+            onDragEnter={dragging && !items.length ? (e) => handleDragEnter(e, {id:-1, status:title}) : null}
         >
             <div className='group-title'>{title}</div>
 
@@ -14,7 +15,7 @@ function Column({ title, items, handleDragStart, handleDragEnter, getStyles, dra
                 <Card
                     key={item.id}
                     item={item}
-                    
+
                     handleDragStart={handleDragStart}
                     handleDragEnter={handleDragEnter}
                     getStyles={getStyles}

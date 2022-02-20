@@ -7,23 +7,30 @@ import Column from './Column'
 
 function DragNDrop({ data }) {
 
-    const [cards, setCards] = useState(data);
-
-    const [columns, setColumns] = useState([])
-
     const uniqueColumns = cards => {
         let res = [];
         cards.forEach(val => {
             if (!res.includes(val.status))
                 res.push(val.status)
         })
-        setColumns(res)
+        // setColumns(res)
+        return res
     }
 
-    useEffect(() => {
-        // fetch('some/api').then(res => res.json()).then(res => filter(res))
-        uniqueColumns(cards)
-    }, [cards])
+
+    const [cards, setCards] = useState(data);
+
+    const [columns, setColumns] = useState(uniqueColumns(data))
+
+
+
+    // uniqueColumns(cards)
+
+
+    // useEffect(() => {
+    // fetch('some/api').then(res => res.json()).then(res => filter(res))
+    // uniqueColumns(cards)
+    // }, [cards])
 
 
 
@@ -33,9 +40,9 @@ function DragNDrop({ data }) {
     const dragNode = useRef();
 
     const handleDragStart = (e, params) => {
-        console.log("Starting drag...", e.target, params);
+        console.log("Starting drag...", e.target, params.id);
 
-        dragItem.current = params;
+        dragItem.current = params.id;
         dragNode.current = e.target;
         dragNode.current.addEventListener('dragend', handleDragEnd);
 
@@ -47,19 +54,18 @@ function DragNDrop({ data }) {
         setDragging(true);
     }
 
-    const handleDragEnter = (e, item) => {
-        console.log("Entering Drag..", item)
+    const handleDragEnter = (e, params) => {
+        console.log("Entering Drag..", params.id, dragItem.current)
 
-        if (item.id !== dragItem.current.id) {
+        if (params.id !== dragItem.current) {
             const newItems = cards.map(e => {
-                if (dragItem.current.id === e.id) {
-                    return { ...e, status: item.status }
+                if (dragItem.current === e.id) {
+                    return { ...e, status: params.status }
                 }
                 return e;
             });
 
             setCards(newItems);
-
         }
     }
 
@@ -73,8 +79,8 @@ function DragNDrop({ data }) {
     }
 
     const getStyles = (params) => {
-        const currentItem = dragItem.current;
-        if (currentItem.grpI === params.grpI && currentItem.itemI === params.itemI) {
+        console.log("get styles", dragItem.current.id, params.id)
+        if (dragItem.current === params.id) {
             return 'current dnd-item'
         }
         return 'dnd-item'

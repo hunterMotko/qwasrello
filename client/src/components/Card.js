@@ -7,10 +7,10 @@ function Card({ item, handleDragStart, handleDragEnter, getStyles, dragging }) {
         <div
             draggable
             key={item.id}
-            onDragStart={(e) => { handleDragStart(e, item) }}
+            onDragStart={(e) => handleDragStart(e, item) }
             // onDragEnter={dragging ? (e) => { handleDragEnter(e, { grpI, itemI }) } : null}
-            onDragEnter={dragging ? (e) => { handleDragEnter(e, item) } : null}
-            className={dragging ? getStyles(item.id) : 'dnd-item'}
+            onDragEnter={dragging ? (e) => { handleDragEnter(e, { id:item.id, status:item.status }) } : null}
+            className={dragging ? getStyles({id:item.id}) : 'dnd-item'}
         >
             <strong>{item.name}</strong>
             <p>{item.desc}</p>
