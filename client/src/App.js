@@ -1,17 +1,8 @@
 // import React, { useEffect, useState } from 'react'
 import React from 'react'
-
 import './assets/main.css'
-
 import DragNDrop from './components/DragNDrop';
 
-// const data = [
-//   { title: 'To Do', items: ['1', '2', '3'] },
-//   { title: 'Doing', items: ['4', '5'] },
-//   { title: 'Done', items: ['6', '7'] }
-// ]
-
-// TODO ideal structure make the frontend cards handle this data
 const api_data = [
     { id: '1', name: 'Todo 1', desc: 'this is some description', assignedTo: 'User 1', image: 'path', status: 'To Do', createdAt: '' },
     { id: '2', name: 'Todo 2', desc: 'this is some description', assignedTo: 'User 2', image: 'path', status: 'To Do', createdAt: '' },
@@ -57,22 +48,14 @@ function App(props) {
     //   loadData()
     // }, [])
 
-    const data = [
-        { title: 'open', items: ['1', '2', '3'] },
-        { title: 'in progress', items: ['4', '5'] },
-        { title: 'done', items: ['6', '7'] }
-      ]
-
     return (
         <div className="App">
-            {/* <header className="App-header"> */}
-            <header>
+            <header className="App-header">
+            {/* <header> */}
                 <h1>Qwasrello</h1>
             </header>
-            {/* <section className='App-section'> */}
             <section>
                 <DragNDrop data={api_data} />
-                {/* <DragNDrop data={data} /> */}
             </section>
         </div>
     );
